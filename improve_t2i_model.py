@@ -48,7 +48,7 @@ class AttentionBlock(nn.Module):
         self.value_proj = nn.Linear(text_embed_dim, text_embed_dim)
         self.out_proj = nn.Linear(text_embed_dim, image_channels)
         # 层归一化
-        self.norm = nn.LayerNorm(image_channels)
+        self.norm = nn.BatchNorm2d(image_channels)
         
     def forward(self, image_features, text_features):
         # image_features: [batch, image_channels, height, width]
